@@ -1,0 +1,26 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <h2 ng-show="subreddit || domain">{{ subreddit || domain }}</h2>
+  <div ng-show="loading" class="loading">Loading...</div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border"  ng-repeat="link in links">
+	<div class="row">
+		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 responsiveEqualHeightGrid">
+		    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 table-cell ">{{ startRank + $index }}</div>
+		    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 table-cell">
+		    	 {{ link.data.score }}
+		    </div>
+		</div>
+	    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 responsiveEqualHeightGrid">
+	    	 <img src="{{ link.data.thumbnail | thumbs }}" />
+	    </div>
+	    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 responsiveEqualHeightGrid">
+		    <div class="entry-top">
+		      <a href="{{ link.data.url }}">{{ link.data.title }}</a>
+		      <span class="domain">(<a ng-href="#{{ link.data.domain | domainURL }}">{{ link.data.domain }}</a>)</span>
+		    </div>
+		    <div class="entry-bottom">
+	      		<p>Dodane przez {{ link.data.author }} | <a href="index.php/comments{{ link.data.permalink }}"> {{ link.data.num_comments }} komentarzy</a></p>
+			</div>
+		</div>
+    </div>
+</div>

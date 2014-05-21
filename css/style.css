@@ -1,0 +1,19 @@
+*{margin:0; padding:0;}
+body{font-family:Arial, Helvetica, sans-serif; font-size:12px;}
+a img{border:0;}
+a{text-decoration:none; color:#000;}
+a:hover{text-decoration:none; color:#000;}
+
+
+header, article, footer{margin:0 auto; }
+header{background-color: #cee3f8; margin-bottom:20px;}
+header h1{margin:20px 0;}
+
+article{}
+article p a{color:#900}
+	.border{border-bottom:1px solid #eee; padding-bottom:10px; margin-bottom:10px;}
+	.entry-top{font-size:16px; margin-bottom:5px;}
+	.entry-bottom{font-size:11px;}
+	.domain{font-size:11px;}
+	.table-cell{display: table-cell; vertical-align: middle;}
+
