@@ -12,6 +12,10 @@ Reddit.config(['$routeProvider', function($routeProvider) {
     	templateUrl: 'views/entries.html', 	
     	controller: 'EntryCtrl'
   	})
+  	.when('/domain/:domain', {
+    	templateUrl: 'views/entries.html', 
+    	controller: 'EntryCtrl'
+  	})
   	.when('/r/:cat/comments/:id/:article', {
     	templateUrl: 'views/coments.html', 	
     	controller: 'EntryCtrl'
@@ -27,6 +31,7 @@ Reddit.controller('EntryCtrl', function($scope, $http, $routeParams, $reddit) {
 
   $scope.subreddit = null
   $scope.cat = null
+  $scope.domain = null
   var base_url = 'http://www.reddit.com/'
   var url = ''
   var comments = false
@@ -37,6 +42,13 @@ Reddit.controller('EntryCtrl', function($scope, $http, $routeParams, $reddit) {
   	comments = true
   }else if ($routeParams.subreddit) {
     url = $routeParams.subreddit
+  } else if ($routeParams.domain) {
+    if ($routeParams.domain.indexOf('self.') == 0) {
+      url = $routeParams.domain.substring(5)
+    }
+    else {
+      url = $routeParams.domain
+    }
   }
 
   
@@ -55,6 +67,18 @@ Reddit.controller('EntryCtrl', function($scope, $http, $routeParams, $reddit) {
 
 
 Reddit.service('$reddit', function($http) {})
+
+
+Reddit.filter('domainURL', function() {
+  return function(domain) {
+    if (domain.indexOf('self.') == 0) {
+      return '/r/' + domain.substring(5)
+    }
+    else {
+      return '/domain/' + domain
+    }
+  }
+})
 
 Reddit.filter('thumbs', function() {
   return function(link) {
