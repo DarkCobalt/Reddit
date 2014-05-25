@@ -1,3 +1,6 @@
+
+
+
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
   <h2 ng-show="subreddit || domain">{{ subreddit || domain }}</h2>
   <div ng-show="loading" class="loading">Loading...</div>
@@ -22,4 +25,16 @@
 			</div>
 		</div>
     </div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border">
+	<div class="row">
+		 <div ng-repeat="comment in new_comments">
+			 <div class="tree tree-{{ comment.root }}">
+			 	<p><span><b>{{ comment.autor }}</b></span></p>
+				<p>{{ comment.comment }}</p>
+				
+			</div>
+		</div>
+    </div>
+    
 </div>
