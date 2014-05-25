@@ -4,23 +4,31 @@
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border"  ng-repeat="link in links">
 	<div class="row">
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 responsiveEqualHeightGrid">
-		    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 table-cell ">{{ startRank + $index }}</div>
-		    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 table-cell">
-		    	 {{ link.data.score }}
-		    </div>
+		<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 score">
+		    	{{ link.data.score }}
 		</div>
-	    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 responsiveEqualHeightGrid">
-	    	 <img src="{{ link.data.thumbnail | thumbs }}" />
+	    <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+	    	 <img src="{{ link.data.thumbnail | thumbs }}"  class="img-responsive"/>
 	    </div>
-	    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 responsiveEqualHeightGrid">
+	    <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
 		    <div class="entry-top">
-		      <a href="{{ link.data.url }}">{{ link.data.title }}</a>
-		      <span class="domain">(<a ng-href="#{{ link.data.domain | domainURL }}">{{ link.data.domain }}</a>)</span>
+		      <a href="{{ link.data.url }}"  target="_blank">{{ link.data.title }}</a>
+		      <span class="domain">(<a href="http://{{ link.data.domain }}"  target="_blank">{{ link.data.domain }}</a>)</span>
 		    </div>
 		    <div class="entry-bottom">
-	      		<p>Dodane przez {{ link.data.author }} | <a href="/coments/{{ link.data.permalink }}"> {{ link.data.num_comments }} komentarzy</a></p>
+	      		<p>Added by {{ link.data.author }} | <a href="index.html#{{ link.data.permalink }}"> {{ link.data.num_comments }} comments</a></p>
 			</div>
+		</div>
+    </div>
+    <div class="row">
+		<ul class="nav nav-list tree" ng-tree="coments">
+			<li  each="obj in data.replies.data.children">
+				<label class="tree-toggler nav-header" ng-if="obj.data.replies|repies">[-]</label>
+				<p>{{obj.data.body }} <br /><span>Author: {{obj.data.author }} | <a class="answer">Answer</a></span></p>
+			</li>
+		</ul>
+		<div class="new_coment">
+			<a class="answer btn btn-default">New comment</a></span>
 		</div>
     </div>
 </div>
