@@ -20,16 +20,15 @@
 			</div>
 		</div>
     </div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border">
-	<div class="row">
+    <div class="row">
 		<ul class="nav nav-list tree" ng-tree="coments">
 			<li  each="obj in data.replies.data.children">
 				<label class="tree-toggler nav-header" ng-if="obj.data.replies|repies">[-]</label>
 				<p>{{obj.data.body }} <br /><span>Author: {{obj.data.author }} | <a class="answer">Answer</a></span></p>
 			</li>
 		</ul>
-		
+		<div class="new_coment">
+			<a class="answer btn btn-default">New comment</a></span>
+		</div>
     </div>
-    
 </div>

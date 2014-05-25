@@ -9,6 +9,10 @@ $(document).ready(function(){
 		
 		$(this).parent().parent().children('ul.tree').toggle(300);
 	});
+	$('.nav-tabs li').click('click',function(){
+		$('.nav-tabs li').removeClass('active');
+		$(this).addClass('active');
+	});
 	$(document).on('click','.answer',function() {
 		that = $(this);
 		$(".ui-dialog-buttonset button").addClass("btn").addClass("btn-default");
@@ -21,13 +25,22 @@ $(document).ready(function(){
       width: 350,
       modal: true,
       buttons: {
-        "Add comment": function() {	        	
-            that.parents('div').next().append( "<li>" +
-               "<div>"+
-				'<p class="ng-binding">' +  $("textarea#content").val() + ' <br><span class="ng-binding">Autor:  '+ $("input#name").val() + ' | <a class="answer">Answer</a></span></p>'+
-				"</div>"+
-				'<ul class="nav nav-list tree"></ul>'+
-            "</li>" );
+        "Add comment": function() {	    
+        	if(that.parent().hasClass('new_coment')){
+        		that.parents('div.new_coment').prev().append( "<li>" +
+	               "<div>"+
+					'<p class="ng-binding">' +  $("textarea#content").val() + ' <br><span class="ng-binding">Autor:  '+ $("input#name").val() + ' | <a class="answer">Answer</a></span></p>'+
+					"</div>"+
+					'<ul class="nav nav-list tree"></ul>'+
+	            "</li>" );
+        	}else{ 	
+	            that.parents('div').next().append( "<li>" +
+	               "<div>"+
+					'<p class="ng-binding">' +  $("textarea#content").val() + ' <br><span class="ng-binding">Autor:  '+ $("input#name").val() + ' | <a class="answer">Answer</a></span></p>'+
+					"</div>"+
+					'<ul class="nav nav-list tree"></ul>'+
+	            "</li>" );
+	           }
            
             $( this ).dialog( "close" );
         },

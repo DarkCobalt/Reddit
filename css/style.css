@@ -18,6 +18,11 @@ article p a{color:#900}
 	.domain{font-size:11px;}
 	.table-cell{display: table-cell; vertical-align: middle;}
 	.score{font-size: 14px; text-align: center; margin-top: 22px; position: relative;}
+	.nav-tabs a{color:#000;}
+	.nav-tabs>li.active>a{color:#900;}
+	
+	.new_coment{margin:10px 0 5px 0; padding:0 20px;}
+	.new_coment a{color:#000; cursor: pointer;}
 	
 	ul.nav-list{margin-left:20px;}
 	ul.nav-list li div{background:#eeeeee; margin:5px 0; border-radius:5px; padding:5px; overflow: hidden;}
@@ -26,3 +31,5 @@ article p a{color:#900}
 	ul.nav-list li div p span{font-size:10px; font-weight: bold; margin-top:5px; display: block;}
 	ul.nav-list li div p span a{cursor:pointer;}
 	.ui-dialog .ui-dialog-titlebar-close {color: #000; line-height: 4px;}
+
+footer p{float:right; color:#ccc;}
