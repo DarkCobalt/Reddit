@@ -1,4 +1,4 @@
-var Reddit = angular.module('Reddit', ['ngRoute','RecursionHelper'])
+var Reddit = angular.module('Reddit', ['ngRoute','angularTree'])
 
 
 
@@ -22,10 +22,6 @@ Reddit.config(['$routeProvider', function($routeProvider) {
   	})
   $routeProvider.otherwise({redirectTo: '/'})
 }])
-
-
-var new_comments = [];
-var root = 0;
 
 Reddit.controller('EntryCtrl', function($scope, $http, $routeParams, $reddit) {
   $scope.links = []
@@ -61,35 +57,11 @@ Reddit.controller('EntryCtrl', function($scope, $http, $routeParams, $reddit) {
      if(comments){
      	$scope.links = res[0].data.children
         $scope.coments = res[1].data.children
-        
-        angular.forEach($scope.coments, function(value, key) {
-			
-			new_comments.push({'autor' : value.data.author, 'comment':value.data.body, 'root':root});
-
-			if (value.data.replies != "") 
-				searchTree(value.data.replies.data.children);
-
-	    }, new_comments);
-	    $scope.new_comments = new_comments;
      }else{
        $scope.links = res.data.children
      }
-      
-});
+  });
 
-
-function searchTree(currChild){
-	  root++;
-    for(var i=0; i < currChild.length; i ++){
-		new_comments.push({'autor' : currChild[i].data.author, 'comment':currChild[i].data.body,'root':root});
-
-    	if (currChild[i].data.replies != "") {
-    		searchTree(currChild[i].data.replies.data.children);
-    	}
-     }
-     root--;	
-     return null;
-}
 	
 })
 
@@ -116,5 +88,15 @@ Reddit.filter('thumbs', function() {
     else {
       return '';
     }
+  }
+})
+Reddit.filter('repies', function() {
+  return function(repies) {
+  	
+    if (repies != undefined && repies != "" && typeof repies != 'Object') {
+    	return true;
+  	}else{
+  		return false;
+  	}
   }
 })

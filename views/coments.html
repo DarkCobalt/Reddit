@@ -28,13 +28,13 @@
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border">
 	<div class="row">
-		 <div ng-repeat="comment in new_comments">
-			 <div class="tree tree-{{ comment.root }}">
-			 	<p><span><b>{{ comment.autor }}</b></span></p>
-				<p>{{ comment.comment }}</p>
-				
-			</div>
-		</div>
+		<ul class="nav nav-list tree" ng-tree="coments">
+			<li  each="obj in data.replies.data.children">
+				<label class="tree-toggler nav-header" ng-if="obj.data.replies|repies">[-]</label>
+				<p>{{obj.data.body }} <br /><span>Autor: {{obj.data.author }}</span></p>
+			</li>
+		</ul>
+		
     </div>
     
 </div>

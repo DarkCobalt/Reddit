@@ -17,11 +17,20 @@
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.js"></script>
     <script src="js/function.js" type="text/javascript"></script>
     <script src="js/grids.js"></script>
-    <script src="js/angular-recursion.js"></script>
+	<script src="js/angular.tree.js"></script>
 	
 	<script>
 	$(document).ready(function(){
 		$('.responsiveEqualHeightGrid').responsiveEqualHeightGrid();
+		$(document).on('click','label.tree-toggler',function () {
+			if($(this).parent().parent().children('ul.tree').is(':visible')){
+				$(this).html('[+]');
+			}else{
+				$(this).html('[-]');
+			}
+			
+			$(this).parent().parent().children('ul.tree').toggle(300);
+		});
 	});
 	</script>
 	<!--[if lt IE 9]>

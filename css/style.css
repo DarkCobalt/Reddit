@@ -17,19 +17,9 @@ article p a{color:#900}
 	.domain{font-size:11px;}
 	.table-cell{display: table-cell; vertical-align: middle;}
 
-	.tree{border: 1px solid #f6f3f3;  background:#a8a7a7; border-radius:5px; padding:5px 10px; margin-bottom:5px;}
-	.tree .plus{float:left; font-size:20px; padding-top:5px; margin-right:10px; cursor: pointer;}
-	.tree p span{font-size:11px;}
-	.tree p{margin:0;}
 	
-	.tree-0{background:#d1d1d1;}
-	.tree-1{margin-left:20px;}
-	.tree-2{margin-left:40px;}
-	.tree-3{margin-left:60px;}
-	.tree-4{margin-left:80px;}
-	.tree-5{margin-left:100px;}
-	.tree-6{margin-left:120px;}
-	.tree-7{margin-left:140px;}
-	.tree-8{margin-left:160px;}
-	.tree-9{margin-left:180px;}
-	.tree-10{margin-left:200px;}
+	ul.nav-list{margin-left:20px;}
+	ul.nav-list li div{background:#eeeeee; margin:5px 0; border-radius:5px; padding:5px; overflow: hidden;}
+	ul.nav-list li div label{font-size:16px; float:left;}
+	ul.nav-list li div p{float:left; margin-left:10px;}
+	ul.nav-list li div p span{font-size:10px; font-weight: bold; margin-top:5px; display: block;}
